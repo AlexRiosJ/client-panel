@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "client-panel-bfb34": {
+      "hosting": {
+        "client-panel": [
+          "client-panel-bfb34"
+        ]
+      }
+    }
+  }
+}
