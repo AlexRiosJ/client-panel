@@ -10,11 +10,19 @@ import { Client } from '../../models/Client';
 })
 export class ClientsComponent implements OnInit {
   clients: Client[];
+  totalOwed: number;
 
   constructor(private clientService: ClientService) { }
 
   ngOnInit(): void {
-    this.clientService.getClients().subscribe(clients => this.clients = clients);
+    this.clientService.getClients().subscribe(clients => {
+      this.clients = clients;
+      this.updateTotalOwed();
+    });
+  }
+
+  updateTotalOwed(): void {
+    this.totalOwed = this.clients.reduce((sum, client) => sum + client.balance, 0);
   }
 
 }
