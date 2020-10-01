@@ -41,4 +41,13 @@ export class ClientDetailsComponent implements OnInit {
     console.log(`Deleting: ${this.id}`);
   }
 
+  updateBalance(): void {
+    this.clientService.updateClient(this.client);
+    this.flashMessage.show('Balance updated', {
+      cssClass: 'alert-success'
+    });
+    this.hasBalance = this.client.balance > 0;
+    this.showBalanceUpdateInput = !this.showBalanceUpdateInput;
+  }
+
 }
