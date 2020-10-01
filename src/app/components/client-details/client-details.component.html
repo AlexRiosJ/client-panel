@@ -5,7 +5,7 @@
     </a>
   </div>
   <div class="col-md-6">
-    <div class="btn-group pull-right">
+    <div class="btn-group float-right">
       <a routerLink="/client/edit/{{ id }}" class="btn btn-dark">Edit</a>
       <button (click)="onDeleteClick()" class="btn btn-danger">Delete</button>
     </div>
@@ -20,8 +20,8 @@
         <h4>Client ID: {{ client.id }}</h4>
       </div>
       <div class="col-md-4 col-sm-6">
-        <h3 class="pull-right">
-          Balance
+        <h3 class="float-right">
+          Balance:
           <span
             [class.text-danger]="hasBalance"
             [class.text-success]="!hasBalance"
@@ -30,7 +30,9 @@
           </span>
           <small>
             <a (click)="showBalanceUpdateInput = !showBalanceUpdateInput">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
+              <span class="text-primary"
+                ><i class="fas fa-pen-square"></i
+              ></span>
             </a>
           </small>
         </h3>
