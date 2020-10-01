@@ -38,7 +38,11 @@ export class ClientDetailsComponent implements OnInit {
   }
 
   onDeleteClick(): void {
-    console.log(`Deleting: ${this.id}`);
+    if (confirm('Are you sure?')) {
+      this.clientService.deleteClient(this.client);
+      this.flashMessage.show('Client removed!', { cssClass: 'alert-success' });
+      this.router.navigate(['/']);
+    }
   }
 
   updateBalance(): void {
