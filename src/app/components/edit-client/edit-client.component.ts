@@ -34,7 +34,13 @@ export class EditClientComponent implements OnInit {
     // Get id from url
     this.id = this.route.snapshot.params.id;
     // Get client
-    this.clientService.getClient(this.id).subscribe(client => this.client = client);
+    this.clientService.getClient(this.id).subscribe(client => {
+      if (client != null) {
+        this.client = client;
+      } else {
+        this.router.navigate(['/not-found']);
+      }
+    });
     this.disableBalanceOnEdit = this.settingsService.getSettings().disableBalanceOnEdit;
   }
 
@@ -45,7 +51,7 @@ export class EditClientComponent implements OnInit {
       value.id = this.id;
       this.clientService.updateClient(value);
       this.flashMessage.show('Client updated!', { cssClass: 'alert-success' });
-      this.router.navigate([`/client/${this.id}`]);
+      this.router.navigate([`/clients/${this.id}`]);
     }
   }
 

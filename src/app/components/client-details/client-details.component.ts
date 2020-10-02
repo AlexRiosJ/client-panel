@@ -31,6 +31,8 @@ export class ClientDetailsComponent implements OnInit {
         if (client.balance > 0) {
           this.hasBalance = true;
         }
+      } else {
+        this.router.navigate(['/not-found']);
       }
 
       this.client = client;
