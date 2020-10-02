@@ -12,9 +12,17 @@ export class SettingsService {
     disableBalanceOnEdit: false
   };
 
-  constructor() { }
+  constructor() {
+    if (localStorage.getItem('client-panel-settings') != null) {
+      this.settings = JSON.parse(localStorage.getItem('client-panel-settings'));
+    }
+  }
 
   getSettings(): Settings {
     return this.settings;
+  }
+
+  updateSettings(newSettings: Settings): void {
+    localStorage.setItem('client-panel-settings', JSON.stringify(newSettings));
   }
 }
