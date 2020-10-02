@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     this.authService.login(this.email, this.password)
-      .then(res => {
+      .then(() => {
         this.router.navigate(['/']);
       }).catch(err => {
         this.flashMessage.show(err.message, { cssClass: 'alert-danger' });
